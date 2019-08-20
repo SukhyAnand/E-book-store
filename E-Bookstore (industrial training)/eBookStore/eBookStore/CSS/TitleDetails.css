@@ -1,0 +1,113 @@
+﻿#TitleDetailsContainer{
+    width: 80%;
+    margin: auto;
+    position: static;
+    margin-bottom: 50px;
+}
+
+#imageContainer{
+    width:49%;
+    float: left;    
+}
+
+#detailsContainer{
+    width:49%;
+    float: left; 
+    padding-left:5px;
+}
+
+#lblTitleBig{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: brown;
+}
+
+#lblCatList{
+    font-size: 0.8em;
+    font-weight: bold;
+    color: darkgray;
+}
+
+#lblDesc{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 0.9em;
+    color: #1d1d1d;
+}
+
+#lowerDiv{
+    width: 80%;
+    margin: auto;
+    position: static;
+}
+
+#innerLowerDiv{
+    width: 95%;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    position:relative;
+}
+
+#txtRev{
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    height: 25px;
+    width:180px;
+    text-align: center;
+}
+
+#btnAddrev{
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    height: 30px;
+    width:80px;
+}
+
+#gvReviews{
+    width: 100%;
+}
+
+h5{
+    margin: 0px;
+}
+#detailsTable{
+    width:90%;
+}
+
+#radRating{
+    margin: auto;
+}
+
+.revtext{
+    font-size: 1em;
+}
+
+.revdate{
+    font-size: 0.7em;
+    color: #808080;
+    font-weight: bold;
+}
+
+.revname{
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #3d1717;
+}
+
+#btnCart{
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    background-image: url("../Images/cartico.png");
+    background-position-x:left;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-color: #3d1717;
+    color: white;
+    width: 180px;
+    height: 40px;
+}

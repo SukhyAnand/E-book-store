@@ -1,0 +1,35 @@
+﻿#innerLogin{
+    width: 60%;
+    margin:auto;
+    text-align:center;
+}
+
+.loginInput{
+    border-width:1px;
+    border-radius: 8px;
+    border-style:solid;
+    border-color: #351515;
+    height: 30px;
+    width: 200px;
+    text-align: center;
+}
+
+#btnLogin{
+    border-width:1px;
+    border-radius: 8px;
+    border-style:solid;
+    border-color: #351515;
+    height: 30px;
+    width: 200px;
+    background-color: #351515;
+    color: white;
+    font-weight: bold;
+}
+
+#txtTimeOut{
+    border-width:0px;
+    border-bottom-width: 1px;
+    text-align: center;
+    border-bottom-color: #351515;
+    background-color: transparent;
+}

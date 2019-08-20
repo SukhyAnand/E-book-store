@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eBookStoreDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="eBookStoreDBModelStoreContainer">
+    <EntitySet Name="Admins" EntityType="eBookStoreDBModel.Store.Admins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="eBookStoreDBModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Authors" EntityType="eBookStoreDBModel.Store.Authors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="eBookStoreDBModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reviews" EntityType="eBookStoreDBModel.Store.Reviews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bills" EntityType="eBookStoreDBModel.Store.Bills" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Titles" EntityType="eBookStoreDBModel.Store.Titles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TitleAuthor" EntityType="eBookStoreDBModel.Store.TitleAuthor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TitleCategory" EntityType="eBookStoreDBModel.Store.TitleCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TitleBill" EntityType="eBookStoreDBModel.Store.TitleBill" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_TitleAuthor_Title" Association="eBookStoreDBModel.Store.FK_TitleAuthor_Title">
+      <End Role="Title" EntitySet="Titles" />
+      <End Role="TitleAuthor" EntitySet="TitleAuthor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TitleAuthor_Author" Association="eBookStoreDBModel.Store.FK_TitleAuthor_Author">
+      <End Role="Author" EntitySet="Authors" />
+      <End Role="TitleAuthor" EntitySet="TitleAuthor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TitleCategory_Title" Association="eBookStoreDBModel.Store.FK_TitleCategory_Title">
+      <End Role="Title" EntitySet="Titles" />
+      <End Role="TitleCategory" EntitySet="TitleCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TitleCategory_Category" Association="eBookStoreDBModel.Store.FK_TitleCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="TitleCategory" EntitySet="TitleCategory" />
+    </AssociationSet>
+    <AssociationSet Name="TitleReview" Association="eBookStoreDBModel.Store.TitleReview">
+      <End Role="Title" EntitySet="Titles" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="UserReview" Association="eBookStoreDBModel.Store.UserReview">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="UserBill" Association="eBookStoreDBModel.Store.UserBill">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Bill" EntitySet="Bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TitleBill_Title" Association="eBookStoreDBModel.Store.FK_TitleBill_Title">
+      <End Role="Title" EntitySet="Titles" />
+      <End Role="TitleBill" EntitySet="TitleBill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TitleBill_Bill" Association="eBookStoreDBModel.Store.FK_TitleBill_Bill">
+      <End Role="Bill" EntitySet="Bills" />
+      <End Role="TitleBill" EntitySet="TitleBill" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminName" Type="varchar(max)" Nullable="false" />
+    <Property Name="AdminLogin" Type="varchar(max)" Nullable="false" />
+    <Property Name="Pass" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar(max)" Nullable="false" />
+    <Property Name="UserLogin" Type="varchar(max)" Nullable="false" />
+    <Property Name="Pass" Type="varchar(max)" Nullable="false" />
+    <Property Name="Contact" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReviewDate" Type="datetime" Nullable="false" />
+    <Property Name="ReviewText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TitleTitleId" Type="int" Nullable="true" />
+    <Property Name="UserUserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bills">
+    <Key>
+      <PropertyRef Name="BillId" />
+    </Key>
+    <Property Name="BillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillDate" Type="datetime" Nullable="false" />
+    <Property Name="BillAmount" Type="decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="UserUserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Titles">
+    <Key>
+      <PropertyRef Name="TitleId" />
+    </Key>
+    <Property Name="TitleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TitleDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Edition" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ISBN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RatingCount" Type="int" Nullable="false" />
+    <Property Name="DownloadCount" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Pages" Type="int" Nullable="false" />
+    <Property Name="Rating" Type="decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="PubDate" Type="datetime" Nullable="false" />
+    <Property Name="FileFormat" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" Precision="7" Scale="2" />
+  </EntityType>
+  <EntityType Name="TitleAuthor">
+    <Key>
+      <PropertyRef Name="Titles_TitleId" />
+      <PropertyRef Name="Authors_AuthorId" />
+    </Key>
+    <Property Name="Titles_TitleId" Type="int" Nullable="false" />
+    <Property Name="Authors_AuthorId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TitleCategory">
+    <Key>
+      <PropertyRef Name="Titles_TitleId" />
+      <PropertyRef Name="Categories_CategoryId" />
+    </Key>
+    <Property Name="Titles_TitleId" Type="int" Nullable="false" />
+    <Property Name="Categories_CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TitleBill">
+    <Key>
+      <PropertyRef Name="Titles_TitleId" />
+      <PropertyRef Name="Bills_BillId" />
+    </Key>
+    <Property Name="Titles_TitleId" Type="int" Nullable="false" />
+    <Property Name="Bills_BillId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="TitleReview">
+    <End Role="Title" Type="eBookStoreDBModel.Store.Titles" Multiplicity="0..1" />
+    <End Role="Review" Type="eBookStoreDBModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="TitleId" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="TitleTitleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserReview">
+    <End Role="User" Type="eBookStoreDBModel.Store.Users" Multiplicity="1" />
+    <End Role="Review" Type="eBookStoreDBModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="UserUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserBill">
+    <End Role="User" Type="eBookStoreDBModel.Store.Users" Multiplicity="1" />
+    <End Role="Bill" Type="eBookStoreDBModel.Store.Bills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="UserUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TitleAuthor_Title">
+    <End Role="Title" Type="eBookStoreDBModel.Store.Titles" Multiplicity="1" />
+    <End Role="TitleAuthor" Type="eBookStoreDBModel.Store.TitleAuthor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="TitleId" />
+      </Principal>
+      <Dependent Role="TitleAuthor">
+        <PropertyRef Name="Titles_TitleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TitleAuthor_Author">
+    <End Role="TitleAuthor" Type="eBookStoreDBModel.Store.TitleAuthor" Multiplicity="*" />
+    <End Role="Author" Type="eBookStoreDBModel.Store.Authors" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="TitleAuthor">
+        <PropertyRef Name="Authors_AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TitleCategory_Title">
+    <End Role="Title" Type="eBookStoreDBModel.Store.Titles" Multiplicity="1" />
+    <End Role="TitleCategory" Type="eBookStoreDBModel.Store.TitleCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="TitleId" />
+      </Principal>
+      <Dependent Role="TitleCategory">
+        <PropertyRef Name="Titles_TitleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TitleCategory_Category">
+    <End Role="TitleCategory" Type="eBookStoreDBModel.Store.TitleCategory" Multiplicity="*" />
+    <End Role="Category" Type="eBookStoreDBModel.Store.Categories" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="TitleCategory">
+        <PropertyRef Name="Categories_CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TitleBill_Title">
+    <End Role="Title" Type="eBookStoreDBModel.Store.Titles" Multiplicity="1" />
+    <End Role="TitleBill" Type="eBookStoreDBModel.Store.TitleBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="TitleId" />
+      </Principal>
+      <Dependent Role="TitleBill">
+        <PropertyRef Name="Titles_TitleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TitleBill_Bill">
+    <End Role="TitleBill" Type="eBookStoreDBModel.Store.TitleBill" Multiplicity="*" />
+    <End Role="Bill" Type="eBookStoreDBModel.Store.Bills" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="BillId" />
+      </Principal>
+      <Dependent Role="TitleBill">
+        <PropertyRef Name="Bills_BillId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="eBookStoreDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="eBookStoreDBModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="eBookStoreDBModel.Admin" />
+          <EntitySet Name="Users" EntityType="eBookStoreDBModel.User" />
+          <EntitySet Name="Authors" EntityType="eBookStoreDBModel.Author" />
+          <EntitySet Name="Categories" EntityType="eBookStoreDBModel.Category" />
+          <EntitySet Name="Reviews" EntityType="eBookStoreDBModel.Review" />
+          <EntitySet Name="Bills" EntityType="eBookStoreDBModel.Bill" />
+          <EntitySet Name="Titles" EntityType="eBookStoreDBModel.Title" />
+          <AssociationSet Name="TitleAuthor" Association="eBookStoreDBModel.TitleAuthor">
+            <End Role="Title" EntitySet="Titles" />
+            <End Role="Author" EntitySet="Authors" />
+          </AssociationSet>
+          <AssociationSet Name="TitleCategory" Association="eBookStoreDBModel.TitleCategory">
+            <End Role="Title" EntitySet="Titles" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="TitleReview" Association="eBookStoreDBModel.TitleReview">
+            <End Role="Title" EntitySet="Titles" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="UserReview" Association="eBookStoreDBModel.UserReview">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="UserBill" Association="eBookStoreDBModel.UserBill">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="TitleBill" Association="eBookStoreDBModel.TitleBill">
+            <End Role="Title" EntitySet="Titles" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="false" />
+          <Property Name="AdminLogin" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="false" />
+          <Property Name="Pass" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="false" />
+          <Property Name="UserLogin" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="false" />
+          <Property Name="Pass" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="false" />
+          <Property Name="Contact" Type="String" Nullable="false" />
+          <NavigationProperty Name="Reviews" Relationship="eBookStoreDBModel.UserReview" FromRole="User" ToRole="Review" />
+          <NavigationProperty Name="Bills" Relationship="eBookStoreDBModel.UserBill" FromRole="User" ToRole="Bill" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+          </Key>
+          <Property Name="AuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Titles" Relationship="eBookStoreDBModel.TitleAuthor" FromRole="Author" ToRole="Title" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Titles" Relationship="eBookStoreDBModel.TitleCategory" FromRole="Category" ToRole="Title" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReviewDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReviewText" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Title" Relationship="eBookStoreDBModel.TitleReview" FromRole="Review" ToRole="Title" />
+          <Property Name="TitleTitleId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="User" Relationship="eBookStoreDBModel.UserReview" FromRole="Review" ToRole="User" />
+          <Property Name="UserUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BillAmount" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <NavigationProperty Name="User" Relationship="eBookStoreDBModel.UserBill" FromRole="Bill" ToRole="User" />
+          <Property Name="UserUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Titles" Relationship="eBookStoreDBModel.TitleBill" FromRole="Bill" ToRole="Title" />
+        </EntityType>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="TitleId" />
+          </Key>
+          <Property Name="TitleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TitleDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Edition" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ISBN" Type="String" Nullable="false" />
+          <Property Name="RatingCount" Type="Int32" Nullable="false" />
+          <Property Name="DownloadCount" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Pages" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="PubDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Authors" Relationship="eBookStoreDBModel.TitleAuthor" FromRole="Title" ToRole="Author" />
+          <NavigationProperty Name="Categories" Relationship="eBookStoreDBModel.TitleCategory" FromRole="Title" ToRole="Category" />
+          <NavigationProperty Name="Reviews" Relationship="eBookStoreDBModel.TitleReview" FromRole="Title" ToRole="Review" />
+          <Property Name="FileFormat" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Scale="2" Precision="7" />
+          <NavigationProperty Name="Bills" Relationship="eBookStoreDBModel.TitleBill" FromRole="Title" ToRole="Bill" />
+        </EntityType>
+        <Association Name="TitleAuthor">
+          <End Type="eBookStoreDBModel.Title" Role="Title" Multiplicity="*" />
+          <End Type="eBookStoreDBModel.Author" Role="Author" Multiplicity="*" />
+        </Association>
+        <Association Name="TitleCategory">
+          <End Type="eBookStoreDBModel.Title" Role="Title" Multiplicity="*" />
+          <End Type="eBookStoreDBModel.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <Association Name="TitleReview">
+          <End Type="eBookStoreDBModel.Title" Role="Title" Multiplicity="0..1" />
+          <End Type="eBookStoreDBModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Title">
+              <PropertyRef Name="TitleId" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="TitleTitleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserReview">
+          <End Type="eBookStoreDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="eBookStoreDBModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="UserUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserBill">
+          <End Type="eBookStoreDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="eBookStoreDBModel.Bill" Role="Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="UserUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TitleBill">
+          <End Type="eBookStoreDBModel.Title" Role="Title" Multiplicity="*" />
+          <End Type="eBookStoreDBModel.Bill" Role="Bill" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eBookStoreDBModelStoreContainer" CdmEntityContainer="eBookStoreDBModelContainer">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="IsTypeOf(eBookStoreDBModel.Admin)">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminLogin" ColumnName="AdminLogin" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(eBookStoreDBModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="IsTypeOf(eBookStoreDBModel.Author)">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(eBookStoreDBModel.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="IsTypeOf(eBookStoreDBModel.Review)">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+          <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+          <ScalarProperty Name="ReviewText" ColumnName="ReviewText" />
+          <ScalarProperty Name="TitleTitleId" ColumnName="TitleTitleId" />
+          <ScalarProperty Name="UserUserId" ColumnName="UserUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="IsTypeOf(eBookStoreDBModel.Bill)">
+        <MappingFragment StoreEntitySet="Bills">
+          <ScalarProperty Name="BillId" ColumnName="BillId" />
+          <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+          <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+          <ScalarProperty Name="UserUserId" ColumnName="UserUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Titles">
+      <EntityTypeMapping TypeName="IsTypeOf(eBookStoreDBModel.Title)">
+        <MappingFragment StoreEntitySet="Titles">
+          <ScalarProperty Name="TitleId" ColumnName="TitleId" />
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+          <ScalarProperty Name="TitleDescription" ColumnName="TitleDescription" />
+          <ScalarProperty Name="Edition" ColumnName="Edition" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="RatingCount" ColumnName="RatingCount" />
+          <ScalarProperty Name="DownloadCount" ColumnName="DownloadCount" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Pages" ColumnName="Pages" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="PubDate" ColumnName="PubDate" />
+          <ScalarProperty Name="FileFormat" ColumnName="FileFormat" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="TitleAuthor" TypeName="eBookStoreDBModel.TitleAuthor" StoreEntitySet="TitleAuthor">
+      <EndProperty Name="Title">
+        <ScalarProperty Name="TitleId" ColumnName="Titles_TitleId" />
+      </EndProperty>
+      <EndProperty Name="Author">
+        <ScalarProperty Name="AuthorId" ColumnName="Authors_AuthorId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TitleCategory" TypeName="eBookStoreDBModel.TitleCategory" StoreEntitySet="TitleCategory">
+      <EndProperty Name="Title">
+        <ScalarProperty Name="TitleId" ColumnName="Titles_TitleId" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="CategoryId" ColumnName="Categories_CategoryId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TitleBill" TypeName="eBookStoreDBModel.TitleBill" StoreEntitySet="TitleBill">
+      <EndProperty Name="Title">
+        <ScalarProperty Name="TitleId" ColumnName="Titles_TitleId" />
+      </EndProperty>
+      <EndProperty Name="Bill">
+        <ScalarProperty Name="BillId" ColumnName="Bills_BillId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

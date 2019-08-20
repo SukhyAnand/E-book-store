@@ -1,0 +1,63 @@
+﻿.wizardinner{
+    width:80%;
+    margin:auto;
+    text-align:center;
+    align-content: center;
+}
+
+.btnGeneric{
+    color:white;
+    background-color: brown;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    height: 30px;
+    width: 100px;
+    font-weight:bold;
+}
+
+.btnNext{
+    color:white;
+    background-color: brown;
+    border-bottom-right-radius:8px;
+    border-top-right-radius:8px;
+    border-style: solid;
+    border-width: 1px;
+    height: 30px;
+    width: 100px;
+    font-weight:bold;
+}
+
+.btnPrev{
+    color:white;
+    background-color: brown;
+    border-bottom-left-radius:8px;
+    border-top-left-radius:8px;
+    border-style: solid;
+    border-width: 1px;
+    height: 30px;
+    width: 100px;
+    font-weight:bold;
+}
+
+.inputGeneric{
+    border:none;
+    border-bottom-width:1px;
+    border-bottom-style:solid;
+    border-bottom-color:brown;
+    background-color:transparent;
+}
+
+.crudinner{
+    width:80%;
+    margin:auto;
+    padding:50px;
+    text-align:left;
+    align-content:center;
+}
+
+.titleTable{
+    text-align: center;
+    vertical-align: middle;
+    width:100%;
+}
